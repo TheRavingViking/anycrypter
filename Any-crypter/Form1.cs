@@ -17,24 +17,6 @@ namespace Any_crypter
         {
             InitializeComponent();
         }
-        // TODO: List
-        /*
-         *      
-         *      Code netter maken
-         *      Comments toevoegen
-         *      console comments verwijderen
-         *      muziekjes updaten
-         *      rickroll toevoegen
-         *      max char toevoegen
-         *      opmaak
-         *      geluiden toevoegen aan de dev branch.
-         *      als applicatie compilen en testen.
-         *      testen
-         * 
-         */
-
-          
-
 
         //Encrypt the input from the first input field
         private void encrypt()
@@ -63,11 +45,7 @@ namespace Any_crypter
                 code = ((c * 3) + teller) * 3;
                 Console.WriteLine(code);                                                                //TODO: moet nog weg.
 
-                // hexa code maken.
-                // hele string converten naar hexa.
-                // output hexa in textbox3   
-             
-                ready_To_Hexa+= code.ToString();
+                ready_To_Hexa += code.ToString();
 
                 hexValue = code.ToString("X");
                 Console.WriteLine(hexValue);                                                            //TODO: moet nog weg.
@@ -83,8 +61,6 @@ namespace Any_crypter
         //Decrypt
         private void decrypt(string encrypted_String = null)
         {
-
-            Console.WriteLine(textBox2.Text.ToCharArray());                                             //TODO: moet nog weg.
             // Set variables
             int parsedstring = 0;
             int teller = 1;
@@ -104,41 +80,22 @@ namespace Any_crypter
             // clear text so we can set the new encrypted code
             textBox3.Clear();
 
-
-          
-
-
-
             // here we sprankle our magic dust and create the words from the encryption.
             foreach (string hexValue in encrypted_Chars)
             {
-                // terug van hexa code
-                // hexa naar deciamal
-                // splitten na elke 3 char's 
-                // de foreach loop in.
-
                 try
                 {
                     parsedstring = int.Parse(hexValue, System.Globalization.NumberStyles.HexNumber);
-                    Console.WriteLine(hexValue);                                                            //TODO: moet nog weg.
-                    Console.WriteLine(parsedstring);                                                        //TODO: moet nog weg.
-
                     teller += 1;
-                    Console.WriteLine(teller);                                                              //TODO: moet nog weg.
                     asciiChar = (parsedstring / 3) - teller;
-                    Console.WriteLine(asciiChar);                                                           //TODO: moet nog weg.
                     decryptedText = (Convert.ToChar(asciiChar / 3)).ToString();
-                    Console.WriteLine(decryptedText);                                                       //TODO: moet nog weg.
                     textBox3.Text += decryptedText;
                 }
                 catch (Exception)
                 {
                     Console.Write("error");
-                    //throw;
                     textBox3.Text = "No valid code";
                 }
-                
-
             }
            
         }

@@ -85,6 +85,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="image\encrypt.jpg" />
+    <Content Include="reward.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="shutdown.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

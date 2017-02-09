@@ -134,7 +134,7 @@ namespace Any_crypter
         {
             if (textBox1.Text == "karim")
             {
-                karimRoll();
+                csharpReward();
             }
             else
             {
@@ -187,6 +187,23 @@ namespace Any_crypter
             SoundPlayer simpleSound = new SoundPlayer(@"troll.wav");
             simpleSound.PlayLooping();
 
+        }
+
+        private void rewardSound()
+        {
+            SoundPlayer simpleSound = new SoundPlayer(@"reward.wav");
+            simpleSound.PlayLooping();
+
+        }
+
+        private void csharpReward()
+        {
+            rewardSound();
+            string decryptedText = "Never gonna give you up, never gonna let you down" + Environment.NewLine +
+"Never gonna run around and desert you" + Environment.NewLine +
+"Never gonna make you cry, never gonna say goodbye" + Environment.NewLine +
+"Never gonna tell a lie and hurt you";
+            textBox3.Text = decryptedText;
         }
 
         private void karimRoll()

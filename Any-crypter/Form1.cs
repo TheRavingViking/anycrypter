@@ -60,23 +60,25 @@ namespace Any_crypter
                 Console.WriteLine((int)c);                                                              //TODO: moet nog weg.
                 teller += 1;
                 Console.WriteLine(teller);                                                              //TODO: moet nog weg.
-                code = (c + teller) * 3;
+                code = ((c * 3) + teller) * 3;
                 Console.WriteLine(code);                                                                //TODO: moet nog weg.
 
                 // hexa code maken.
                 // hele string converten naar hexa.
                 // output hexa in textbox3   
-                             
+             
                 ready_To_Hexa+= code.ToString();
 
                 hexValue = code.ToString("X");
                 Console.WriteLine(hexValue);                                                            //TODO: moet nog weg.
-                trimmed_String += hexValue + "-".ToString();
+                trimmed_String += hexValue;
 
-                textBox3.Text = trimmed_String.Substring(0,trimmed_String.Length -1);
+                textBox3.Text = trimmed_String;
+                textBox2.Text = trimmed_String;
             }
 
         }
+
 
         //Decrypt
         private void decrypt()
@@ -87,16 +89,27 @@ namespace Any_crypter
             int teller = 1;
             int asciiChar = 0;
             string decryptedText = "";
-            string s = textBox2.Text;
-            string[] split = s.Split("-".ToCharArray());
+            char[] s = textBox2.Text.ToCharArray();
+
+            List<string> encrypted_Chars = new List<string>();
+
+            for (int i = 0; i < s.Length; i += 3)
+            {
+                string char_String = "";
+                char_String = (s[i].ToString() + s[i+1].ToString() + s[i+2].ToString());
+                encrypted_Chars.Add(char_String);
+            }
 
             // clear text so we can set the new encrypted code
             textBox3.Clear();
 
 
+          
+
+
 
             // here we sprankle our magic dust and create the words from the encryption.
-            foreach (string hexValue in split)
+            foreach (string hexValue in encrypted_Chars)
             {
                 // terug van hexa code
                 // hexa naar deciamal
@@ -113,7 +126,7 @@ namespace Any_crypter
                     Console.WriteLine(teller);                                                              //TODO: moet nog weg.
                     asciiChar = (parsedstring / 3) - teller;
                     Console.WriteLine(asciiChar);                                                           //TODO: moet nog weg.
-                    decryptedText = (Convert.ToChar(asciiChar)).ToString();
+                    decryptedText = (Convert.ToChar(asciiChar / 3)).ToString();
                     Console.WriteLine(decryptedText);                                                       //TODO: moet nog weg.
                     textBox3.Text += decryptedText;
                 }
@@ -139,7 +152,7 @@ namespace Any_crypter
             else
             {
                 encrypt();
-                startupSound();
+                //startupSound();
             }
         }
 
@@ -157,7 +170,7 @@ namespace Any_crypter
         private void button2_Click(object sender, EventArgs e)
         {
             decrypt();
-            shutdownSound();
+            //shutdownSound();
         }
 
         // Keystrokes for textbox 2

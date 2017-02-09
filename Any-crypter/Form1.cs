@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
 
-namespace Any_crypter
+namespace Any_crypter 
 {
     public partial class Form1 : Form
     {
@@ -21,26 +21,18 @@ namespace Any_crypter
         /*
          *      
          *      Code netter maken
-         *      Comments toevoegen
-         *      console comments verwijderen
-         *      muziekjes updaten
-         *      rickroll toevoegen
-         *      max char toevoegen
-         *      opmaak
-         *      geluiden toevoegen aan de dev branch.
          *      als applicatie compilen en testen.
-         *      testen
          * 
          */
 
-          
+
+
+
 
 
         //Encrypt the input from the first input field
         private void encrypt()
         {
-            
-            Console.WriteLine(textBox1.Text.ToCharArray());                                             //TODO: moet nog weg.
 
             // Set variables
             string s = textBox1.Text;
@@ -57,20 +49,12 @@ namespace Any_crypter
             foreach (char c in s)
             {
                 // here we sprankle our magic dust and create the code to encrypt.
-                Console.WriteLine((int)c);                                                              //TODO: moet nog weg.
                 teller += 1;
-                Console.WriteLine(teller);                                                              //TODO: moet nog weg.
                 code = ((c * 3) + teller) * 3;
-                Console.WriteLine(code);                                                                //TODO: moet nog weg.
 
-                // hexa code maken.
-                // hele string converten naar hexa.
-                // output hexa in textbox3   
-             
                 ready_To_Hexa+= code.ToString();
 
                 hexValue = code.ToString("X");
-                Console.WriteLine(hexValue);                                                            //TODO: moet nog weg.
                 trimmed_String += hexValue;
 
                 textBox3.Text = trimmed_String;
@@ -83,7 +67,6 @@ namespace Any_crypter
         //Decrypt
         private void decrypt()
         {
-            Console.WriteLine(textBox2.Text.ToCharArray());                                             //TODO: moet nog weg.
             // Set variables
             int parsedstring = 0;
             int teller = 1;
@@ -93,47 +76,37 @@ namespace Any_crypter
 
             List<string> encrypted_Chars = new List<string>();
 
-            for (int i = 0; i < s.Length; i += 3)
+            try
             {
-                string char_String = "";
-                char_String = (s[i].ToString() + s[i+1].ToString() + s[i+2].ToString());
-                encrypted_Chars.Add(char_String);
+                for (int i = 0; i < s.Length; i += 3)
+                {
+                    string char_String = "";
+                    char_String = (s[i].ToString() + s[i + 1].ToString() + s[i + 2].ToString());
+                    encrypted_Chars.Add(char_String);
+                }
             }
-
+            catch (Exception)
+            {
+                //error
+                textBox3.Text = "No valid code";
+            }
             // clear text so we can set the new encrypted code
             textBox3.Clear();
-
-
-          
-
-
 
             // here we sprankle our magic dust and create the words from the encryption.
             foreach (string hexValue in encrypted_Chars)
             {
-                // terug van hexa code
-                // hexa naar deciamal
-                // splitten na elke 3 char's 
-                // de foreach loop in.
-
                 try
                 {
                     parsedstring = int.Parse(hexValue, System.Globalization.NumberStyles.HexNumber);
-                    Console.WriteLine(hexValue);                                                            //TODO: moet nog weg.
-                    Console.WriteLine(parsedstring);                                                        //TODO: moet nog weg.
-
                     teller += 1;
-                    Console.WriteLine(teller);                                                              //TODO: moet nog weg.
                     asciiChar = (parsedstring / 3) - teller;
-                    Console.WriteLine(asciiChar);                                                           //TODO: moet nog weg.
                     decryptedText = (Convert.ToChar(asciiChar / 3)).ToString();
-                    Console.WriteLine(decryptedText);                                                       //TODO: moet nog weg.
                     textBox3.Text += decryptedText;
                 }
                 catch (Exception)
                 {
-                    Console.Write("error");
-                    //throw;
+                    //error
                     textBox3.Text = "No valid code";
                 }
                 

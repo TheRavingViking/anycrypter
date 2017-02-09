@@ -21,9 +21,6 @@ namespace Any_crypter
         //Encrypt the input from the first input field
         private void encrypt()
         {
-            
-            Console.WriteLine(textBox1.Text.ToCharArray());                                             //TODO: moet nog weg.
-
             // Set variables
             string s = textBox1.Text;
             int teller = 1;
@@ -39,16 +36,12 @@ namespace Any_crypter
             foreach (char c in s)
             {
                 // here we sprankle our magic dust and create the code to encrypt.
-                Console.WriteLine((int)c);                                                              //TODO: moet nog weg.
                 teller += 1;
-                Console.WriteLine(teller);                                                              //TODO: moet nog weg.
                 code = ((c * 3) + teller) * 3;
-                Console.WriteLine(code);                                                                //TODO: moet nog weg.
 
                 ready_To_Hexa += code.ToString();
 
                 hexValue = code.ToString("X");
-                Console.WriteLine(hexValue);                                                            //TODO: moet nog weg.
                 trimmed_String += hexValue;
 
                 textBox3.Text = trimmed_String;
@@ -93,7 +86,6 @@ namespace Any_crypter
                 }
                 catch (Exception)
                 {
-                    Console.Write("error");
                     textBox3.Text = "No valid code";
                 }
             }

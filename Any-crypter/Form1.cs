@@ -213,6 +213,7 @@ namespace Any_crypter
 
         }
 
+        //Reward
         private void csharpReward()
         {
             rewardSound();

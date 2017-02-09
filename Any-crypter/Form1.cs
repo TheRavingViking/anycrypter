@@ -146,21 +146,43 @@ namespace Any_crypter
         //sounds
         private void startupSound()
         {
-            SoundPlayer simpleSound = new SoundPlayer(@"startup.wav");
-            simpleSound.Play();
+            try
+            {
+                SoundPlayer simpleSound = new SoundPlayer(@"startup.wav");
+                simpleSound.Play();
+            }
+            catch (Exception)
+            {
+
+            }
 
         }
         private void shutdownSound()
         {
-            SoundPlayer simpleSound = new SoundPlayer(@"shutdown.wav");
-            simpleSound.Play();
+            try
+            {
+                SoundPlayer simpleSound = new SoundPlayer(@"shutdown.wav");
+                simpleSound.Play();
+            }
+            catch (Exception)
+            {
+
+            }
 
         }
 
         private void rewardSound()
         {
-            SoundPlayer simpleSound = new SoundPlayer(@"reward.wav");
-            simpleSound.Play();
+            try
+            {
+                SoundPlayer simpleSound = new SoundPlayer(@"reward.wav");
+                simpleSound.Play();
+            }
+            catch (Exception)
+            {
+
+            }
+            
 
         }
 

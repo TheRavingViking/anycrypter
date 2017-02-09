@@ -66,7 +66,7 @@ namespace Any_crypter
             for (int i = 0; i < s.Length; i += 3)
             {
                 string char_String = "";
-                char_String = (s[i].ToString() + s[i+1].ToString() + s[i+2].ToString());
+                char_String = (s[i].ToString() + s[i + 1].ToString() + s[i + 2].ToString());
                 encrypted_Chars.Add(char_String);
             }
 
@@ -89,7 +89,7 @@ namespace Any_crypter
                     textBox3.Text = "No valid code";
                 }
             }
-           
+
         }
 
         //Textbox 1
@@ -142,6 +142,8 @@ namespace Any_crypter
             }
 
         }
+
+        //sounds
         private void startupSound()
         {
             SoundPlayer simpleSound = new SoundPlayer(@"startup.wav");
